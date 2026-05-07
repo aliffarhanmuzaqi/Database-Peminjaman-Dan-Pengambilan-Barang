@@ -1,0 +1,458 @@
+# Landing Page GitHub Pages — Modern Form Selector
+
+Buat file dengan nama:
+
+```text
+index.html
+```
+
+Lalu paste seluruh kode di bawah ini.
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oren Abadi Sakti</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      min-height:100vh;
+      overflow:hidden;
+      background:
+      radial-gradient(circle at top left,#2563eb 0%,transparent 30%),
+      radial-gradient(circle at bottom right,#0f766e 0%,transparent 35%),
+      linear-gradient(135deg,#020617,#0f172a,#111827);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+      position:relative;
+    }
+
+    .blur1,
+    .blur2{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(90px);
+      opacity:0.35;
+      z-index:0;
+    }
+
+    .blur1{
+      width:260px;
+      height:260px;
+      background:#2563eb;
+      top:-50px;
+      left:-50px;
+    }
+
+    .blur2{
+      width:250px;
+      height:250px;
+      background:#14b8a6;
+      bottom:-60px;
+      right:-60px;
+    }
+
+    .container{
+      width:100%;
+      max-width:430px;
+      position:relative;
+      z-index:2;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.15);
+      backdrop-filter:blur(18px);
+      border-radius:32px;
+      padding:34px 24px;
+      box-shadow:
+      0 10px 40px rgba(0,0,0,0.45),
+      inset 0 1px 1px rgba(255,255,255,0.08);
+      animation:fadeIn 0.8s ease;
+    }
+
+    .top{
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    .logo-box{
+      width:100px;
+      height:100px;
+      margin:auto;
+      border-radius:24px;
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.15);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,0.3);
+      margin-bottom:20px;
+    }
+
+    .logo-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    h1{
+      color:white;
+      font-size:30px;
+      font-weight:700;
+      margin-bottom:8px;
+      letter-spacing:0.3px;
+    }
+
+    .subtitle{
+      color:#cbd5e1;
+      font-size:14px;
+      line-height:1.6;
+      max-width:320px;
+      margin:auto;
+    }
+
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      margin-top:28px;
+    }
+
+    .btn{
+      text-decoration:none;
+      position:relative;
+      overflow:hidden;
+      border-radius:22px;
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      transition:0.25s ease;
+      border:1px solid rgba(255,255,255,0.12);
+    }
+
+    .btn:hover{
+      transform:translateY(-4px);
+      box-shadow:0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    .btn:active{
+      transform:scale(0.98);
+    }
+
+    .btn-left{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+
+    .icon{
+      width:54px;
+      height:54px;
+      border-radius:16px;
+      background:rgba(255,255,255,0.15);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      flex-shrink:0;
+    }
+
+    .text h2{
+      color:white;
+      font-size:17px;
+      margin-bottom:4px;
+      font-weight:600;
+    }
+
+    .text p{
+      color:#dbe4ef;
+      font-size:12px;
+      opacity:0.9;
+    }
+
+    .arrow{
+      color:white;
+      font-size:24px;
+      opacity:0.8;
+    }
+
+    .aktivasi{
+      background:
+      linear-gradient(
+      135deg,
+      rgba(37,99,235,0.85),
+      rgba(59,130,246,0.65)
+      );
+    }
+
+    .gangguan{
+      background:
+      linear-gradient(
+      135deg,
+      rgba(5,150,105,0.85),
+      rgba(16,185,129,0.65)
+      );
+    }
+
+    .footer{
+      margin-top:28px;
+      text-align:center;
+      color:#94a3b8;
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    .status{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .badge{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+      color:#e2e8f0;
+      font-size:11px;
+      padding:8px 12px;
+      border-radius:999px;
+      backdrop-filter:blur(10px);
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(25px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:480px){
+
+      body{
+        overflow:auto;
+        padding:18px;
+      }
+
+      .card{
+        padding:28px 18px;
+        border-radius:28px;
+      }
+
+      h1{
+        font-size:26px;
+      }
+
+      .subtitle{
+        font-size:13px;
+      }
+
+      .btn{
+        padding:16px;
+      }
+
+      .icon{
+        width:50px;
+        height:50px;
+        font-size:22px;
+      }
+
+      .text h2{
+        font-size:15px;
+      }
+
+      .text p{
+        font-size:11px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="blur1"></div>
+  <div class="blur2"></div>
+
+  <div class="container">
+
+    <div class="card">
+
+      <div class="top">
+
+        <div class="logo-box">
+
+          <!-- GANTI LOGO DI SINI -->
+          <img src="https://via.placeholder.com/100x100.png?text=OAS" alt="Logo">
+
+        </div>
+
+        <h1>Oren Abadi Sakti</h1>
+
+        <div class="subtitle">
+          Silahkan pilih layanan form sesuai kebutuhan operasional Anda.
+        </div>
+
+      </div>
+
+      <div class="menu">
+
+        <a class="btn aktivasi"
+           href="LINK_FORM_1"
+           target="_blank">
+
+          <div class="btn-left">
+
+            <div class="icon">
+              🚀
+            </div>
+
+            <div class="text">
+              <h2>Form Aktivasi</h2>
+              <p>Input data pemasangan & aktivasi</p>
+            </div>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+        <a class="btn gangguan"
+           href="LINK_FORM_2"
+           target="_blank">
+
+          <div class="btn-left">
+
+            <div class="icon">
+              🛠️
+            </div>
+
+            <div class="text">
+              <h2>Form Gangguan</h2>
+              <p>Laporan maintenance & troubleshooting</p>
+            </div>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+      </div>
+
+      <div class="status">
+        <div class="badge">Mobile Friendly</div>
+        <div class="badge">Fast Access</div>
+        <div class="badge">Secure Form</div>
+      </div>
+
+      <div class="footer">
+        © 2026 Oren Abadi Sakti<br>
+        Integrated Form Portal
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
+```
+
+---
+
+## Yang perlu diganti
+
+Ganti:
+
+```text
+LINK_FORM_1
+```
+
+menjadi link Google Form pertama.
+
+Dan:
+
+```text
+LINK_FORM_2
+```
+
+menjadi link Google Form kedua.
+
+---
+
+## Cara upload ke GitHub Pages
+
+1. Buat repository baru di GitHub
+2. Upload file `index.html`
+3. Masuk ke:
+
+   * Settings
+   * Pages
+4. Source:
+
+   * Deploy from branch
+5. Branch:
+
+   * main
+6. Save
+
+Nanti dapat link:
+
+```text
+https://username.github.io/nama-repo/
+```
+
+---
+
+## Cara ganti logo perusahaan
+
+Upload logo ke repository GitHub.
+
+Misalnya nama file:
+
+```text
+logo.png
+```
+
+Lalu ganti:
+
+```html
+<img src="https://via.placeholder.com/100x100.png?text=OAS" alt="Logo">
+```
+
+menjadi:
+
+```html
+<img src="logo.png" alt="Logo">
+```
